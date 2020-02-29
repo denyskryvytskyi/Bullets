@@ -158,9 +158,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bullet.cpp" />
+    <ClCompile Include="src\BulletFactory.cpp" />
     <ClCompile Include="src\BulletManager.cpp" />
-    <ClCompile Include="src\Factory.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Math.cpp" />
+    <ClCompile Include="src\TimePoint.cpp" />
+    <ClCompile Include="src\Wall.cpp" />
+    <ClCompile Include="src\WallFactory.cpp" />
     <ClCompile Include="src\WallManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +175,9 @@
     <ClInclude Include="src\CommonTypes.h" />
     <ClInclude Include="src\Factory.h" />
     <ClInclude Include="src\IManager.h" />
+    <ClInclude Include="src\Config.h" />
+    <ClInclude Include="src\Math.h" />
+    <ClInclude Include="src\TimePoint.h" />
     <ClInclude Include="src\Wall.h" />
     <ClInclude Include="src\WallFactory.h" />
     <ClInclude Include="src\WallManager.h" />

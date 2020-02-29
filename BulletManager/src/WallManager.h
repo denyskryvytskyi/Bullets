@@ -1,19 +1,24 @@
 #ifndef __WALL_MANAGER_H__
 #define __WALL_MANAGER_H__
 
-#include <vector>
+#include <list>
 #include "Wall.h"
+
+typedef std::shared_ptr<Wall> WallPtr;
+typedef std::list<WallPtr> WallList;
 
 class WallManager
 {
 private:
-    std::vector<Wall> mWalls;
+    WallList mWalls;
+
+private:
+    bool AddWall(WallPtr wall);
+
 public:
-    WallManager();
-    ~WallManager();
-    //
-    void Update(float time);
-    void AddWall(Wall* wall);
+    bool BuildWalls(int wallsCount);
 };
+
+extern WallManager gWallManager;
 
 #endif // BULLET_MANAGER_H

@@ -1,17 +1,23 @@
+#include "Config.h"
 #include "WallManager.h"
 
-WallManager::WallManager()
+bool WallManager::BuildWalls(int wallsCount)
 {
+    // for
+    // create wall through wall factory
+
+    // add created wall to mWalls through  AddWall method
+
+    return false;
 }
 
-WallManager::~WallManager()
+bool WallManager::AddWall(WallPtr wall)
 {
-}
+    if (wall != nullptr && mWalls.size() < mMaxWallsCount)
+    {
+        mWalls.push_back(wall);
+        return true;
+    }
 
-void WallManager::Update(float time)
-{
-}
-
-void WallManager::AddWall(Wall* wall)
-{
+    return false;
 }

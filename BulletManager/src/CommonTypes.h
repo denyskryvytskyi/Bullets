@@ -3,19 +3,30 @@
 
 #include <SFML/Graphics.hpp>
 
+template <typename T>
 class Line
 {
 public:
-    sf::Vector2f A;
-    sf::Vector2f B;
+    T A;
+    T B;
 
 public:
     Line() :A(), B() {}
-    Line(sf::Vector2f theA, sf::Vector2f theB)
+    Line(T theA, T theB)
         :A(theA), B(theB) {}
     Line(const Line& line)
         :A(line.A), B(line.B) {}
-
 };
 
+typedef Line<sf::Vector2f> Line2f;
+typedef Line<sf::Vector2i> Line2i;
+
+enum KeyCode
+{
+    KeyCode_MouseBtnPressed = sf::Event::MouseButtonPressed,
+    KeyCode_MouseBtnReleased = sf::Event::MouseButtonReleased,
+    KeyCode_LeftMouseBtn = sf::Mouse::Left,
+    KeyCode_RightMouseBtn = sf::Mouse::Right,
+    KeyCode_WinClosed = sf::Event::Closed,
+};
 #endif // !__COMMON_TYPES_H__

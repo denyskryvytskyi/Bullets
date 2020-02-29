@@ -1,21 +1,26 @@
 #ifndef __BULLET_MANAGER_H__
 #define __BULLET_MANAGER_H__
 
-#include <vector>
+#include <list>
 #include "Bullet.h"
+
+typedef std::shared_ptr<Bullet> BulletPtr;
 
 class BulletManager
 {
+    typedef std::list<BulletPtr> BulletList;
+
 private:
-    const int mMaxBulletsCount = 100;
-    std::vector<Bullet*> mBullets;
+    BulletList mBullets;
+
+private:
+    bool AddBullet(BulletPtr bullet);
+
 public:
-    BulletManager();
-    ~BulletManager();
+    void Update(float time);
+    bool Fire(sf::Vector2f pos, sf::Vector2f dir, float speed, float time, float lifeTime);
     //
-    void Update();
-    void AddBullet(Bullet* bullet);
-    void Fire(sf::Vector2f pos, sf::Vector2f dir, float speed, float time, float lifeTime);
+    inline BulletList GetBullets() { return mBullets;};
 };
 
 #endif // BULLET_MANAGER_H
