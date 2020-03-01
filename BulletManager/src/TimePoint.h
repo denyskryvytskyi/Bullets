@@ -9,7 +9,6 @@ class TimePoint
 {
 	Timepoint mTimePoint;
 public:
-	bool operator==(const TimePoint& t) const;
 	void SetCurrTime();
 	float SecondsSince(const TimePoint& t) const;
 };

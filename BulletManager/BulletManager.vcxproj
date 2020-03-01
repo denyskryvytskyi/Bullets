@@ -163,6 +163,7 @@
     <ClCompile Include="src\BulletManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Math.cpp" />
+    <ClCompile Include="src\Physics.cpp" />
     <ClCompile Include="src\TimePoint.cpp" />
     <ClCompile Include="src\Wall.cpp" />
     <ClCompile Include="src\WallFactory.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="src\IManager.h" />
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\Math.h" />
+    <ClInclude Include="src\Physics.h" />
     <ClInclude Include="src\TimePoint.h" />
     <ClInclude Include="src\Wall.h" />
     <ClInclude Include="src\WallFactory.h" />

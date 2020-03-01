@@ -5,9 +5,6 @@ void BulletManager::Update(float time)
 {
     for (BulletList::iterator bulletIterator = mBullets.begin(); bulletIterator != mBullets.end();)
     {
-        // check collision
-
-        // check life_time
         if (!(*bulletIterator)->Update(time))
             bulletIterator = mBullets.erase(bulletIterator);
         else

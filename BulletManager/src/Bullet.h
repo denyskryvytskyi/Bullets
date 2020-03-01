@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "BulletFactory.h"
 #include "TimePoint.h"
+#include "WallManager.h"
 
 class Bullet
 {
@@ -16,16 +17,21 @@ private:
     float mSpeed;
     float mLifeTime;
     TimePoint mStartTime;
+    sf::Vector2f mVelocity;
 
 public:
-    bool mAlive;
+    bool mIsAlive;
 
 public:
     Bullet(sf::CircleShape body, sf::Vector2f position, sf::Vector2f direction, float speed, float life_time);
     //
-    bool Update(float time);
+    bool Update(const float time);
     //
     inline sf::CircleShape GetBody() { return mBody; }
+    //
+    bool CheckCollision(sf::Vector2f oldPos, const float time);
+    void ChangeDirection(const sf::Vector2f rotatePoint, const float angle, bool relativePos);
+    //
 };
 
 #endif // !__BULLET_H__

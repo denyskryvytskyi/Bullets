@@ -5,10 +5,12 @@
 #include "Wall.h"
 
 typedef std::shared_ptr<Wall> WallPtr;
-typedef std::list<WallPtr> WallList;
+
 
 class WallManager
 {
+    typedef std::list<WallPtr> WallList;
+
 private:
     WallList mWalls;
 
@@ -16,7 +18,10 @@ private:
     bool AddWall(WallPtr wall);
 
 public:
-    bool BuildWalls(int wallsCount);
+    void Update();
+    bool BuildWalls();
+    //
+    inline WallList GetWalls() { return mWalls; };
 };
 
 extern WallManager gWallManager;

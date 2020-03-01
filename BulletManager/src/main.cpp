@@ -9,12 +9,12 @@ WallManager gWallManager;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 900), "Bullet Manager");
+    sf::RenderWindow window(sf::VideoMode(modeWidth, modeHeight), "Bullet Manager");
 
     sf::Clock clock;
 
     BulletManager bulletManager;
-    gWallManager.BuildWalls(4);
+    gWallManager.BuildWalls();
 
     sf::Vector2i startPos;
     sf::Vector2i endPos;
@@ -44,7 +44,7 @@ int main()
                 if (event.mouseButton.button == KeyCode_LeftMouseBtn)
                 {
                     endPos = sf::Mouse::getPosition(window);
-                    float distance = Math::Length(sf::Vector2f(startPos), sf::Vector2f(endPos));
+                    //float distance = Math::Length(sf::Vector2f(startPos), sf::Vector2f(endPos));
                     //sf::Vector2f direction = Math::Normalized(sf::Vector2f(endPos), distance);
                     sf::Vector2f direction = sf::Vector2f(endPos - startPos);
                     float speed = 1.f;
@@ -57,15 +57,21 @@ int main()
         }
 
         bulletManager.Update(elapsedTime.asSeconds());
+        gWallManager.Update();
 
         window.clear();
-        // draw walls
 
+        // draw walls
+        for (WallPtr wall : gWallManager.GetWalls())
+        {
+            window.draw(wall->GetBody());
+        }
         // draw bullets
         for (BulletPtr bullet : bulletManager.GetBullets())
         {
             window.draw(bullet->GetBody());
         }
+
         window.display();
     }
 

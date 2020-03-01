@@ -13,9 +13,12 @@ private:
     Line2f mWallSegment;
 
 public:
-    Wall();
+    bool mIsAlive;
+public:
     Wall(sf::RectangleShape body, Line2f wallSegment);
-    ~Wall();
+    //
+    inline sf::RectangleShape GetBody() { return mBody; }
+    inline Line2f GetSegment() { return mWallSegment; }
 };
 
 #endif // !__WALL_H__
