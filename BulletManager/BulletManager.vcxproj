@@ -161,6 +161,7 @@
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\BulletFactory.cpp" />
     <ClCompile Include="src\BulletManager.cpp" />
+    <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Physics.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="src\BulletManager.h" />
     <ClInclude Include="src\CommonTypes.h" />
     <ClInclude Include="src\Factory.h" />
+    <ClInclude Include="src\GameManager.h" />
     <ClInclude Include="src\IManager.h" />
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\Math.h" />

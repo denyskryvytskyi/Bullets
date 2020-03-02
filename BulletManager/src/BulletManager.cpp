@@ -14,7 +14,7 @@ void BulletManager::Update(float time)
 
 bool BulletManager::AddBullet(BulletPtr bullet)
 {
-    if (bullet != nullptr && mBullets.size() < mMaxBulletsCount)
+    if (bullet != nullptr && mBullets.size() < max_bullets_count)
     {
         mBullets.push_back(std::move(bullet));
         return true;
@@ -27,7 +27,7 @@ bool BulletManager::Fire(sf::Vector2f pos, sf::Vector2f dir, float speed, float 
 {
     // sleep time seconds / for thread
 
-    if (mBullets.size() < mMaxBulletsCount)
+    if (mBullets.size() < max_bullets_count)
     {
         BulletPtr bullet = BulletFactory::Create(pos, dir, speed, lifeTime);
 

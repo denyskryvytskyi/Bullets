@@ -7,7 +7,7 @@ std::shared_ptr<Wall> WallFactory::Create(sf::Vector2f size, sf::Vector2f startP
     sf::RectangleShape body;
     body.setPosition(startPosition);
     body.setSize(size);
-    body.setFillColor(sf::Color::Yellow);
+    body.setFillColor(sf::Color::Red);
 
     Line2f segment(startPosition, endPosition);
 

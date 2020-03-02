@@ -17,7 +17,6 @@ private:
     float mSpeed;
     float mLifeTime;
     TimePoint mStartTime;
-    sf::Vector2f mVelocity;
 
 public:
     bool mIsAlive;
@@ -30,8 +29,6 @@ public:
     inline sf::CircleShape GetBody() { return mBody; }
     //
     bool CheckCollision(const float time);
-    void ChangeDirection(const sf::Vector2f rotatePoint, const float angle, bool relativePos);
-    //
 };
 
 #endif // !__BULLET_H__

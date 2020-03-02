@@ -29,4 +29,5 @@ enum KeyCode
     KeyCode_RightMouseBtn = sf::Mouse::Right,
     KeyCode_WinClosed = sf::Event::Closed,
 };
+
 #endif // !__COMMON_TYPES_H__

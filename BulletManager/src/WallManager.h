@@ -6,7 +6,6 @@
 
 typedef std::shared_ptr<Wall> WallPtr;
 
-
 class WallManager
 {
     typedef std::list<WallPtr> WallList;

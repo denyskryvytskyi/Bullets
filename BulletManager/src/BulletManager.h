@@ -20,7 +20,7 @@ public:
     void Update(float time);
     bool Fire(sf::Vector2f pos, sf::Vector2f dir, float speed, float time, float lifeTime);
     //
-    inline BulletList GetBullets() { return mBullets;};
+    inline BulletList GetBullets() { return mBullets; };
 };
 
 #endif // BULLET_MANAGER_H
