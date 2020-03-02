@@ -20,20 +20,20 @@ bool Bullet::Update(const float time)
     if (secondsFromStart >= mLifeTime)
         return false;
 
-    sf::Vector2f oldPos = mPos;
+    //sf::Vector2f oldPos = mPos;
 
     mPos += mDir * mSpeed * time;
     mBody.setPosition(mPos);
 
-    mVelocity = Physics::FindVelocity(oldPos, mPos, time);
+    //mVelocity = Physics::FindVelocity(oldPos, mPos, time);
 
-    CheckCollision(oldPos, time);
+    CheckCollision(time);
 
     return true;
 }
 
 
-bool Bullet::CheckCollision(sf::Vector2f oldPos, const float time)
+bool Bullet::CheckCollision(const float time)
 {
     for (WallPtr wall : gWallManager.GetWalls())
     {
@@ -41,8 +41,9 @@ bool Bullet::CheckCollision(sf::Vector2f oldPos, const float time)
         if (Physics::CheckIntersection(mBody, wall->GetBody(), point))
         {
             //float angle = Physics::CalculateRotateAngle(point, mPos, mVelocity);
-            float angle = Physics::AngleOfIntersec(Line2f(oldPos, mPos), wall->GetSegment());
-            ChangeDirection(point, angle, Physics::PointPosition(mPos, wall->GetSegment()));
+            //float angle = Physics::AngleOfIntersec(Line2f(oldPos, mPos), wall->GetSegment());
+            //ChangeDirection(point, angle, Physics::PointPosition(mPos, wall->GetSegment()));
+            mDir = Physics::ReflectionVector(mDir, mPos, point);
             mPos = point + mDir * time;
             mBody.setPosition(mPos);
 
@@ -54,12 +55,13 @@ bool Bullet::CheckCollision(sf::Vector2f oldPos, const float time)
     return false;
 }
 
-void Bullet::ChangeDirection(const sf::Vector2f rotatePoint, const float angle, bool right)
-{
-    
-    float xNew = mDir.x * cos(2 * angle) - mDir.y * sin(2 * angle);
-    float yNew = mDir.x * sin(2 * angle) + mDir.y * cos(2 * angle);
-
-    mDir.x = xNew;
-    mDir.y = yNew;
-}
+//void Bullet::ChangeDirection(const sf::Vector2f rotatePoint, const float theta, bool right)
+//{
+//    float angle = 60;
+//
+//    float xNew = mDir.x * cos(2 * angle) - mDir.y * sin(2 * angle);
+//    float yNew = mDir.x * sin(2 * angle) + mDir.y * cos(2 * angle);
+//
+//    mDir.x = xNew;
+//    mDir.y = yNew;
+//}

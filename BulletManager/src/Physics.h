@@ -13,9 +13,7 @@ public:
     //
     static bool CheckIntersection(const sf::CircleShape circle, const sf::RectangleShape rect, sf::Vector2f& intersectPoint);
     //
-    static bool PointPosition(sf::Vector2f point, Line2f line);
-    //
-    static float AngleOfIntersec(Line2f A, Line2f B);
+    static sf::Vector2f ReflectionVector(sf::Vector2f dir, sf::Vector2f pos, sf::Vector2f point);
 };
 
 #endif // !__PHYSICS_H__

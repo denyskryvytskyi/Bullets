@@ -29,7 +29,7 @@ public:
     //
     inline sf::CircleShape GetBody() { return mBody; }
     //
-    bool CheckCollision(sf::Vector2f oldPos, const float time);
+    bool CheckCollision(const float time);
     void ChangeDirection(const sf::Vector2f rotatePoint, const float angle, bool relativePos);
     //
 };

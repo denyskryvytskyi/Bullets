@@ -40,27 +40,15 @@ bool Physics::CheckIntersection(const sf::CircleShape circle, const sf::Rectangl
     return (deltaX * deltaX + deltaY * deltaY) < (radius * radius);
 }
 
-bool Physics::PointPosition(sf::Vector2f point, Line2f line)
+sf::Vector2f Physics::ReflectionVector(sf::Vector2f dir, sf::Vector2f pos, sf::Vector2f point)
 {
-    // for vertical
+    // r = d - 2(d . n) * n , where d . n is dot product
+    sf::Vector2f distance(pos.x - point.x, pos.y - point.y);
+    sf::Vector2f normal(distance.x, distance.y);
 
-    // for horizontal
+    normal = Math::Normalized(normal);
 
-    float D = (point.x - line.A.x) * (line.B.y - line.A.y) - (point.y - line.A.y) * (line.B.x - line.A.x);
+    sf::Vector2f r = dir - 2 * Math::DotProduct(dir, normal) * normal;
 
-    return D > 0 ? false : true;
-}
-
-float Physics::AngleOfIntersec(Line2f aLine, Line2f bLine) 
-{
-    sf::Vector2f first, second;
-    first.x = aLine.B.x - aLine.A.x;	//calculating vectors first and second from A and B lines
-    first.y = aLine.B.y - aLine.A.y;	//
-    second.x = bLine.B.x - bLine.A.x;	//
-    second.y = bLine.B.y - bLine.A.y;	//
-
-    float fMod = std::sqrt(first.x * first.x + first.y * first.y);		//vectors' modules
-    float sMod = std::sqrt(second.x * second.x + second.y * second.y);	//
-
-    return acos((first.x * second.x + first.y * second.y) / (fMod * sMod));
+    return r;
 }

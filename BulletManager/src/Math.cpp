@@ -7,11 +7,16 @@ float Math::Length(sf::Vector2f A, sf::Vector2f B)
     return sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2));
 }
 
-sf::Vector2f Math::Normalized(sf::Vector2f vec, float distance)
+float Math::VecLength(sf::Vector2f vec)
 {
-    vec.x /= distance;
-    vec.y /= distance;
-    return vec;
+    return sqrt(vec.x * vec.x + vec.y * vec.y);
+}
+
+sf::Vector2f Math::Normalized(const sf::Vector2f vec)
+{
+    float lengthInverse = 1 / VecLength(vec);
+
+    return vec * lengthInverse;
 }
 
 bool Math::PointInPoly(const sf::Vector2f& test, const sf::Shape& polygon)
@@ -71,4 +76,9 @@ float Math::Min(float x, float y)
 float Math::RadiansToDegrees(float radians)
 {
     return radians * (180.f / mPi);
+}
+
+float Math::DotProduct(const sf::Vector2f vecA, const sf::Vector2f vecB)
+{
+    return vecA.x * vecB.x + vecA.y * vecB.y;
 }
