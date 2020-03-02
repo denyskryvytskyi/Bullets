@@ -1,4 +1,3 @@
-#include <iostream>
 #include <list>
 #include <SFML/Graphics.hpp>
 #include "BulletManager.h"
