@@ -2,14 +2,10 @@
 #define __BULLET_H__
 
 #include <SFML/Graphics.hpp>
-#include "BulletFactory.h"
 #include "TimePoint.h"
-#include "WallManager.h"
 
 class Bullet
 {
-    friend class BulletFactory;
-
 private:
     sf::CircleShape mBody;
     sf::Vector2f mPos;
@@ -26,7 +22,7 @@ public:
     //
     bool Update(const float time);
     //
-    inline sf::CircleShape GetBody() { return mBody; }
+    inline sf::CircleShape GetBody() const { return mBody; }
     //
     bool CheckCollision(const float time);
 };

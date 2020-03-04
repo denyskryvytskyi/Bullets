@@ -12,6 +12,7 @@ class WallManager
 
 private:
     WallList mWalls;
+    const unsigned int mMaxWallsCount = 50;
 
 private:
     bool AddWall(WallPtr wall);

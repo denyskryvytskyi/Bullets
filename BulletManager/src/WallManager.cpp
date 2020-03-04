@@ -15,19 +15,21 @@ void WallManager::Update()
 
 bool WallManager::BuildWalls()
 {
-    // сделать доп функционал (описал в заметках)
+    float wallWidth = 30.f;
+    float screenHeight = Config::mode_height;
+    float screenWidth = Config::mode_width;
 
-    AddWall(WallFactory::Create(sf::Vector2f(def_rect_width, mode_height), sf::Vector2f(0, 0), sf::Vector2f(mode_width, 0))); // left
-    AddWall(WallFactory::Create(sf::Vector2f(mode_width, def_rect_width), sf::Vector2f(0, mode_height - def_rect_width), sf::Vector2f(mode_width, mode_height - def_rect_width))); // down
-    AddWall(WallFactory::Create(sf::Vector2f(mode_width, def_rect_width), sf::Vector2f(def_rect_width, 0), sf::Vector2f(mode_height - def_rect_width, 0))); // up
-    AddWall(WallFactory::Create(sf::Vector2f(def_rect_width, mode_height), sf::Vector2f(mode_width - def_rect_width, def_rect_width), sf::Vector2f(mode_width - def_rect_width, mode_height))); // right
+    AddWall(WallFactory::Create(sf::Vector2f(wallWidth, screenHeight), sf::Vector2f(0, 0), sf::Vector2f(screenWidth, 0))); // left
+    AddWall(WallFactory::Create(sf::Vector2f(screenWidth, wallWidth), sf::Vector2f(0, screenHeight - wallWidth), sf::Vector2f(screenWidth, screenHeight - wallWidth))); // down
+    AddWall(WallFactory::Create(sf::Vector2f(screenWidth, wallWidth), sf::Vector2f(wallWidth, 0), sf::Vector2f(screenHeight - wallWidth, 0))); // up
+    AddWall(WallFactory::Create(sf::Vector2f(wallWidth, screenHeight), sf::Vector2f(screenWidth - wallWidth, wallWidth), sf::Vector2f(screenWidth - wallWidth, screenHeight))); // right
 
     return true;
 }
 
 bool WallManager::AddWall(WallPtr wall)
 {
-    if (wall != nullptr && mWalls.size() < max_walls_count)
+    if (wall != nullptr && mWalls.size() < mMaxWallsCount)
     {
         mWalls.push_back(wall);
         return true;

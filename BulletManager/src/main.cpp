@@ -1,15 +1,16 @@
 #include <list>
+#include <thread>
 #include <SFML/Graphics.hpp>
 #include "BulletManager.h"
 #include "WallManager.h"
 #include "GameManager.h"
-#include "Math.h"
+#include "Config.h"
 
 WallManager gWallManager;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(mode_width, mode_height), "Bullet Manager");
+    sf::RenderWindow window(sf::VideoMode(Config::mode_width, Config::mode_height), "Bullet Manager");
 
     sf::Clock clock;
 
@@ -22,8 +23,8 @@ int main()
     sf::Vector2i endPos;
 
     float speed;
-    float startTime = gameManager.mFireStartTime;
-    float lifeTime = gameManager.mBulletLifeTime;
+    float startTime = 0.2f;
+    float lifeTime = 5.f;
 
     sf::Time elapsedTime;
     sf::Event event;
@@ -52,11 +53,14 @@ int main()
                 if (event.mouseButton.button == KeyCode_LeftMouseBtn)
                 {
                     endPos = sf::Mouse::getPosition(window);
+
                     direction = sf::Vector2f(endPos - startPos);
-                    speed = gameManager.mBulletSpeed;
+                    speed = gameManager.mDefaultBulletSpeed;
+
                     gameManager.CheckSpeed(direction, speed);
 
-                    bulletManager.Fire(sf::Vector2f(startPos), direction, speed, startTime, lifeTime);
+                    std::thread fThread(&BulletManager::Fire, std::ref(bulletManager), sf::Vector2f(startPos), direction, speed, startTime, lifeTime);
+                    fThread.detach();
                 }
             }
         }

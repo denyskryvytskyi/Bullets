@@ -3,8 +3,6 @@
 
 #include "Wall.h"
 
-class Wall;
-
 class WallFactory
 {
 public:

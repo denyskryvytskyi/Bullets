@@ -3,20 +3,19 @@
 
 #include "SFML/Graphics.hpp"
 
-class Math
+namespace Math
 {
-private:
-    static const double mPi;
-public:
-    static float Length(sf::Vector2f A, sf::Vector2f B);
-    static float VecLength(sf::Vector2f vec);
+    const double mPi = 3.141592653589793238463;
     //
-    static sf::Vector2f Normalized(sf::Vector2f vec);
+    float Length(sf::Vector2f A, sf::Vector2f B);
+    float VecLength(sf::Vector2f vec);
     //
-    static float Max(float, float);
-    static float Min(float, float);
+    sf::Vector2f Normalized(sf::Vector2f vec);
     //
-    static float DotProduct(const sf::Vector2f vecA, const sf::Vector2f vecB);
+    float Max(float, float);
+    float Min(float, float);
+    //
+    float DotProduct(const sf::Vector2f vecA, const sf::Vector2f vecB);
 };
 
 #endif // !__MATH_H__

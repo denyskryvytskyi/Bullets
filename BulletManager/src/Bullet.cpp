@@ -1,7 +1,6 @@
 #include "Bullet.h"
-#include "TimePoint.h"
-#include "Math.h"
 #include "Physics.h"
+#include "WallManager.h"
 
 Bullet::Bullet(sf::CircleShape body, sf::Vector2f position, sf::Vector2f direction, float speed, float life_time) :
     mBody(body),

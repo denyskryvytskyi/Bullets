@@ -1,5 +1,9 @@
+#include <thread>
+#include <mutex>
 #include "BulletManager.h"
 #include "BulletFactory.h"
+
+std::mutex mu;
 
 void BulletManager::Update(float time)
 {
@@ -14,7 +18,8 @@ void BulletManager::Update(float time)
 
 bool BulletManager::AddBullet(BulletPtr bullet)
 {
-    if (bullet != nullptr && mBullets.size() < max_bullets_count)
+    std::lock_guard<std::mutex> lock(mu);
+    if (bullet != nullptr && mBullets.size() < mMaxBulletsCount)
     {
         mBullets.push_back(std::move(bullet));
         return true;
@@ -25,9 +30,9 @@ bool BulletManager::AddBullet(BulletPtr bullet)
 
 bool BulletManager::Fire(sf::Vector2f pos, sf::Vector2f dir, float speed, float time, float lifeTime)
 {
-    // sleep time seconds / for thread
+    std::this_thread::sleep_for(std::chrono::milliseconds((int)(time * 1000)));
 
-    if (mBullets.size() < max_bullets_count)
+    if (mBullets.size() < mMaxBulletsCount)
     {
         BulletPtr bullet = BulletFactory::Create(pos, dir, speed, lifeTime);
 
