@@ -19,4 +19,6 @@ public:
     inline Line2f GetSegment() const { return mWallSegment; }
 };
 
+typedef std::shared_ptr<Wall> WallPtr;
+
 #endif // !__WALL_H__

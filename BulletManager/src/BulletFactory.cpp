@@ -1,6 +1,6 @@
 #include "BulletFactory.h"
 
-std::shared_ptr<Bullet> BulletFactory::Create(sf::Vector2f position, sf::Vector2f direction, float speed, float life_time, float radius)
+BulletPtr BulletFactory::Create(sf::Vector2f position, sf::Vector2f direction, float speed, float life_time, float radius)
 {
     sf::CircleShape body;
     body.setRadius(radius);

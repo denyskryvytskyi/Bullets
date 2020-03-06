@@ -27,4 +27,6 @@ public:
     bool CheckCollision(const float time);
 };
 
+typedef std::shared_ptr<Bullet> BulletPtr;
+
 #endif // !__BULLET_H__

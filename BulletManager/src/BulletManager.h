@@ -4,8 +4,6 @@
 #include <list>
 #include "Bullet.h"
 
-typedef std::shared_ptr<Bullet> BulletPtr;
-
 class BulletManager
 {
     typedef std::list<BulletPtr> BulletList;
@@ -24,4 +22,4 @@ public:
     inline BulletList GetBullets() const { return mBullets; };
 };
 
-#endif // BULLET_MANAGER_H
+#endif // !__BULLET_MANAGER_H__
