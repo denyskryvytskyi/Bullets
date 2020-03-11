@@ -1,15 +1,14 @@
 #ifndef __WALL_MANAGER_H__
 #define __WALL_MANAGER_H__
 
-#include <list>
 #include "Wall.h"
 
 class WallManager
 {
-    typedef std::list<WallPtr> WallList;
+    typedef std::vector<WallPtr> WallArray;
 
 private:
-    WallList mWalls;
+    WallArray mWalls;
     const unsigned int mMaxWallsCount = 50;
 
 private:
@@ -19,7 +18,7 @@ public:
     void Update();
     bool BuildWalls();
     //
-    inline WallList GetWalls() { return mWalls; };
+    inline WallArray GetWalls() { return mWalls; };
 };
 
 extern WallManager gWallManager;

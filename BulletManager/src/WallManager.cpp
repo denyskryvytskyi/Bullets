@@ -4,7 +4,7 @@
 
 void WallManager::Update()
 {
-    for (WallList::iterator wallIterator = mWalls.begin(); wallIterator != mWalls.end();)
+    for (WallArray::iterator wallIterator = mWalls.begin(); wallIterator != mWalls.end();)
     {
         if (!(*wallIterator)->mIsAlive)
             wallIterator = mWalls.erase(wallIterator);

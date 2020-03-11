@@ -7,7 +7,7 @@ std::mutex mu;
 
 void BulletManager::Update(float time)
 {
-    for (BulletList::iterator bulletIterator = mBullets.begin(); bulletIterator != mBullets.end();)
+    for (BulletArray::iterator bulletIterator = mBullets.begin(); bulletIterator != mBullets.end();)
     {
         if (!(*bulletIterator)->Update(time))
             bulletIterator = mBullets.erase(bulletIterator);

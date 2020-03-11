@@ -1,15 +1,14 @@
 #ifndef __BULLET_MANAGER_H__
 #define __BULLET_MANAGER_H__
 
-#include <list>
 #include "Bullet.h"
 
 class BulletManager
 {
-    typedef std::list<BulletPtr> BulletList;
+    typedef std::vector<BulletPtr> BulletArray;
 
 private:
-    BulletList mBullets;
+    BulletArray mBullets;
     const unsigned int mMaxBulletsCount = 100;
 
 private:
@@ -19,7 +18,7 @@ public:
     void Update(float time);
     bool Fire(sf::Vector2f pos, sf::Vector2f dir, float speed, float time, float lifeTime);
     //
-    inline BulletList GetBullets() const { return mBullets; };
+    inline BulletArray GetBullets() const { return mBullets; };
 };
 
 #endif // !__BULLET_MANAGER_H__
