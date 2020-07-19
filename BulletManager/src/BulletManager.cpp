@@ -7,6 +7,7 @@ std::mutex mu;
 
 void BulletManager::Update(float time)
 {
+    std::lock_guard<std::mutex> lock(mu);
     for (BulletArray::iterator bulletIterator = mBullets.begin(); bulletIterator != mBullets.end();)
     {
         if (!(*bulletIterator)->Update(time))
